@@ -1,0 +1,9 @@
+# bunder config
+
+project:
+    flatbuffers
+
+build:
+    path: './build'
+
+depend:

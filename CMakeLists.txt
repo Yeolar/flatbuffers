@@ -341,6 +341,6 @@ endif()
 
 include(CMake/BuildFlatBuffers.cmake)
 
-if(FLATBUFFERS_PACKAGE_DEBIAN)
+#if(FLATBUFFERS_PACKAGE_DEBIAN)
     include(CMake/PackageDebian.cmake)
-endif()
+#endif()
