@@ -289,11 +289,22 @@ if(FLATBUFFERS_INSTALL)
   endif()
 
   if(FLATBUFFERS_BUILD_FLATC)
-    install(
-      TARGETS flatc EXPORT FlatcTargets
-      RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-      CONFIGURATIONS Release
-    )
+    if(CMAKE_VERSION VERSION_LESS 3.0)
+      install(
+        TARGETS flatc EXPORT FlatcTargets
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_BINDIR}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        CONFIGURATIONS Release
+      )
+    else()
+      install(
+        TARGETS flatc EXPORT FlatcTargets
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_BINDIR}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+        CONFIGURATIONS Release
+      )
+    endif()
 
     install(
       EXPORT FlatcTargets
